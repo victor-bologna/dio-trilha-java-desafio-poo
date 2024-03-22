@@ -1,7 +1,4 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 
@@ -22,6 +19,14 @@ public class Main {
         mentoria.setDescricao("descrição mentoria java");
         mentoria.setData(LocalDate.now());
 
+        Conteudo exercicioJava = new ExercicioJava(NivelDificuldade.MEDIO);
+        exercicioJava.setTitulo("Fibonacci");
+        exercicioJava.setDescricao("Criar um programa para fazer a sequência de Fibonacci.");
+
+        Conteudo exercicioJs = new ExercicioJs(NivelDificuldade.DIFICIL);
+        exercicioJs.setTitulo("Calculadora");
+        exercicioJs.setDescricao("Criar uma calculadora com HTML.");
+
         /*System.out.println(curso1);
         System.out.println(curso2);
         System.out.println(mentoria);*/
@@ -32,6 +37,8 @@ public class Main {
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
         bootcamp.getConteudos().add(mentoria);
+        bootcamp.getConteudos().add(exercicioJs);
+        bootcamp.getConteudos().add(exercicioJava);
 
         Dev devCamila = new Dev();
         devCamila.setNome("Camila");
@@ -58,6 +65,23 @@ public class Main {
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
 
+        Dev devVictor = new Dev();
+        devVictor.setNome("Victor");
+        devVictor.inscreverBootcamp(bootcamp);
+        System.out.println("Contéudos inscritos de Victor: " + devVictor.getConteudosInscritos());
+        devVictor.progredir();
+        devVictor.progredir();
+        devVictor.progredir();
+        System.out.println("Victor fez os seguintes contéudos: " + devVictor.getConteudosConcluidos()
+                + ", falta o seguinte: " + devVictor.getConteudosInscritos());
+        devVictor.progredir();
+        System.out.println("Victor fez: " + devVictor.getConteudosConcluidos() + ", falta :"
+                + devVictor.getConteudosInscritos());
+        devVictor.progredir();
+        System.out.println("Status de Victor:");
+        System.out.println("Cursos Concluidos: " + devVictor.getConteudosConcluidos());
+        System.out.println("Cursos a fazer: " + devVictor.getConteudosInscritos());
+        System.out.println("XP: " + devVictor.calcularTotalXp());
     }
 
 }
